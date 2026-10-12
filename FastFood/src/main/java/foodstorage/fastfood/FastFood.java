@@ -4,6 +4,11 @@
 
 package foodstorage.fastfood;
 
+
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.Scanner;
+
 /**
  *
  * @author ipman
@@ -11,6 +16,15 @@ package foodstorage.fastfood;
 public class FastFood {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!!!!");
+        Scanner scanner = new Scanner(System.in);
+        FoodStorage storage = new FoodStorage();
+        
+        
+        System.out.println("====================================");
+        System.out.println(" FAST-FOOD STORAGE SYSTEM");
+        System.out.println("====================================");
+
+        int mode = chooseMode(scanner);
+        boolean running = true;
     }
 }
