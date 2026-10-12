@@ -11,6 +11,6 @@ package foodstorage.fastfood;
 public class FastFood {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello World!!!!");
     }
 }
