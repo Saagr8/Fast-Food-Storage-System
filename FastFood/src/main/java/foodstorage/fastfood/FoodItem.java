@@ -8,6 +8,13 @@ package foodstorage.fastfood;
  *
  * @author user
  */
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 public class FoodItem {
+    
+    private String name;
+    private double weight;
+    private LocalDate bestBeforeDate;
+    private LocalDateTime placedTime;
     
 }
