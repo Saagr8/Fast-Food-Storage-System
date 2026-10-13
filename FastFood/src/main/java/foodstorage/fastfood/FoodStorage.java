@@ -6,7 +6,7 @@ package foodstorage.fastfood;
 
 /**
  *
- * @author as
+ * @author keo
  */
 public class FoodStorage {
     
