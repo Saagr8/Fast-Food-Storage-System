@@ -38,6 +38,7 @@ public class FastFood {
                 
                 case 2:
                     removeFood(storage, mode);
+                    break;
                     
                 case 3:
                     storage.displayAll();
@@ -64,5 +65,38 @@ public class FastFood {
         
         scanner.close();
         
+    }
+    private static int chooseMode(Scanner scanner){
+        System.out.println("Choose storage mode: ");
+        System.out.println("1. Same side - Stack / LIFO");
+        System.out.println("2. Opposite side - Queue / FIFO");
+        
+        while (true){
+            int mode = readInt(scanner, "Enter 1 or 2: ");
+            
+            if (mode == 1 || mode == 2) {
+                return mode;
+            }
+            
+            System.out.println("Please enter only 1 or 2. ");
+        
+        }
+   }  
+   
+    private static void showMenu(int mode){
+        System.out.println("\n--------------- MENU ---------------");
+        
+        if (mode == 1) {
+            System.out.println("Current mode: Stack /LIFO");
+        } else {
+            System.out.println("Current mode: Queue / FIFO");
+        }
+        System.out.println("1. Add food item");
+        System.out.println("2. Remove food item");
+        System.out.println("3. Display all food items");
+        System.out.println("4. Peek next food item");
+        System.out.println("5. Search food item by name");
+        System.out.println("6. Exit");
+        System.out.println("------------------------------");
     }
 }
