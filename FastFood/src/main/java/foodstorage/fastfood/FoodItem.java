@@ -17,4 +17,10 @@ public class FoodItem {
     private LocalDate bestBeforeDate;
     private LocalDateTime placedTime;
     
+    public FoodItem(String name, double weight, LocalDate bestBeforeDate) {
+    this.name = name;
+    this.weight = weight;
+    this.bestBeforeDate = bestBeforeDate;
+    this.placedTime = LocalDateTime.now();
+}
 }
