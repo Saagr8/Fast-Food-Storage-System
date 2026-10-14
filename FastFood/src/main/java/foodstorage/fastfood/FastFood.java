@@ -99,4 +99,16 @@ public class FastFood {
         System.out.println("6. Exit");
         System.out.println("------------------------------");
     }
+    
+    private static void addFood(Scanner scanner, FoodStorage storage){
+         if (storage.isFull()){
+             System.out.println("Storage is full. Maximum capacity is 8 trays");
+             return;
+         }
+         
+         String name = readFoodName(scanner);
+         double weight = readWeight(scanner);
+         LovalDate bestBeforeDate = readBestBeforeDate(scanner);
+         storage.addFood(item);
+    }
 }
