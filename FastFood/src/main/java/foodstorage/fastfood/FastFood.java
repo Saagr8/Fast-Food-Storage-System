@@ -108,7 +108,24 @@ public class FastFood {
          
          String name = readFoodName(scanner);
          double weight = readWeight(scanner);
-         LovalDate bestBeforeDate = readBestBeforeDate(scanner);
+         LocalDate bestBeforeDate = readBestBeforeDate(scanner);
          storage.addFood(item);
+    }
+    
+    private static String readFoodName(Scanner scanner){
+        while (true){
+            System.out.println("Enter food name (Burger, Pizza, Fries, Sandwich, Hotdog): ");
+            String name = scanner.nextLine().trim();
+            
+            if (name.equalsIgnoreCase("Burger")
+                    || name.equalsIgnoreCase("Pizza")
+                    || name.equalsIgnoreCase("Sandwich")
+                    || name.equalsIgnoreCase("Hotdog")){
+                
+                return name;
+            }
+            
+            System.out.println("Invalid food name. Please choose one of the five foods. ");
+        }
     }
 }
