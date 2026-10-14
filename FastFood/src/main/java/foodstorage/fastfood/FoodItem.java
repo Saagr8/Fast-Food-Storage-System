@@ -38,4 +38,11 @@ public LocalDate getBestBeforeDate() {
 public LocalDateTime getPlacedTime() {
     return placedTime;
 }
+@Override
+public String toString() {
+    return "Name: " + name
+            + ", Weight: " + weight + "g"
+            + ", Best Before: " + bestBeforeDate
+            + ", Placed Time: " + placedTime;
+}
 }
