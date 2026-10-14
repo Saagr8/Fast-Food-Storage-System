@@ -23,4 +23,19 @@ public class FoodItem {
     this.bestBeforeDate = bestBeforeDate;
     this.placedTime = LocalDateTime.now();
 }
+    public String getName() {
+    return name;
+}
+
+public double getWeight() {
+    return weight;
+}
+
+public LocalDate getBestBeforeDate() {
+    return bestBeforeDate;
+}
+
+public LocalDateTime getPlacedTime() {
+    return placedTime;
+}
 }
