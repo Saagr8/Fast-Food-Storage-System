@@ -19,6 +19,16 @@ public class FoodStorage {
     public FoodStorage() {
         storage = new ArrayDeque<>();
     }
+    //Storage status methods(check if full, empty,or size)
+public boolean isFull(){
+    return storage.size()== MAX_CAPACITY;
+}
+public boolean isEmpty(){
+    return storage.isEmpty();
+}
+public int getSize(){
+    return storage.size();
+}
 }
 
 
