@@ -29,6 +29,16 @@ public boolean isEmpty(){
 public int getSize(){
     return storage.size();
 }
+
+//Method to add a food item. Checks if storage is full before adding
+public void addFood(FoodItem item){
+    if (isFull()){
+        System.out.println("Storage is full. Maximum capacity is 8 trays.");
+        return;
+    }
+    storage.addFirst(item);
+    System.out.println(item.getName() + "added successfully.");
+}
 }
 
 
