@@ -128,4 +128,22 @@ public class FastFood {
             System.out.println("Invalid food name. Please choose one of the five foods. ");
         }
     }
+    
+    private static double readWeight(Scanner scanner){
+        while (true) {
+            System.out.println("Enter weight in grams: ");
+            String input = scanner.nextLine().trim();
+            
+            try{
+                double weight = Double.parseDouble(input);
+                
+                if (weight > 0){
+                    return weight;
+                }
+                System.out.println("Weight must be greater than 0.");
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number for weight.");
+            }
+        }
+    }
 }
