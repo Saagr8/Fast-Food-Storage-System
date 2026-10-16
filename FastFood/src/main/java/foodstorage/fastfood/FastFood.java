@@ -146,4 +146,28 @@ public class FastFood {
             }
         }
     }
+    
+    private static LocalDate readBestBeforeDate(Scanner scanner){
+        LocalDate today = LocalDate.now();
+        LocalDate lastestDate = today.plusDays(14);
+        
+        while (true) {
+            System.out.println("Enter best-before date (YYY-MM-DD, within 14 days): ");
+            String input = scanner.nextLine().trim();
+            
+            try {
+                LocalDate date = LocalDate.parse(input);
+                
+                if ( date.isBefore(today)){
+                    System.out.println("Best-before date cannot be in the past.");
+                } else if (date.isAfter(latestDate)) {
+                    System.out.println("Best-before date cannot be more than 14 days away.");
+                } else {
+                    return date;
+                }
+            } catch (DateTimeParseException e) {
+                System.out.println("Invalid date. Use YYYY-MM-DD. ");
+            }
+        }
+    }
 }
