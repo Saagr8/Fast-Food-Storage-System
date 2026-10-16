@@ -39,6 +39,23 @@ public void addFood(FoodItem item){
     storage.addFirst(item);
     System.out.println(item.getName() + "added successfully.");
 }
+//Add removal method
+public FoodItem removeFromFront(){
+    if (isEmpty()){
+        System.out.println("Storage is empty. Nothing to remove.");
+        return null;
+    }
+    return storage.removeFirst();
+    
+}
+
+public FoodItem removeFromOppositeSide(){
+    if (isEmpty()){
+        System.out.println("Storage is empty. Nothing to remove.");
+        return null;
+    }
+    return storage.removeLast();
+}
 }
 
 
