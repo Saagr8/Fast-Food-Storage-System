@@ -202,4 +202,34 @@ public class FastFood {
         }
     }
     
+    private static void searchFood(Scanner scanner, FoodStorage storage) {
+        if (storage.isEmpty()) {
+            System.out.println("Storage is empty. Nothing to search.");
+            return;
+        }
+        
+        System.out.println("Enter food name to search: ");
+        String name = scanner.nextLine().trim();
+        FoodItem found = storage.searchByName(name);
+        
+        if (found == null) {
+            System.out.println(name + " was not found in storage.");
+        } else {
+            System.out.println("Food item found: ");
+            System.out.println(found);
+        }
+    }
+    
+    private static int readInt(Scanner scanner, String message){
+        while (true) {
+            System.out.println(message);
+            String input = scanner.nextLine().trim();
+            
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid whole number.");
+            }
+        }
+    }
 }
