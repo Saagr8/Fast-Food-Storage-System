@@ -39,7 +39,7 @@ public void addFood(FoodItem item){
     storage.addFirst(item);
     System.out.println(item.getName() + "added successfully.");
 }
-//Add removal method
+//Add removal methods (front and opposite)
 public FoodItem removeFromFront(){
     if (isEmpty()){
         System.out.println("Storage is empty. Nothing to remove.");
@@ -56,6 +56,28 @@ public FoodItem removeFromOppositeSide(){
     }
     return storage.removeLast();
 }
+//Add peek methods and search functionality.
+public FoodItem peekFront(){
+    if  (isEmpty()){
+        return null;
+    }
+    return storage.peekFirst();
+}
+public FoodItem peekOppositeSide(){
+    if (isEmpty()){
+        return null;
+    }
+    return storage.peekLast();
+}
+public FoodItem searchByName(String name){
+    for (FoodItem item : storage){
+        if (item.getName().equalsIgnoreCase(name)){
+          return item;  
+        }
+    }
+    return null;
+}
+
 }
 
 
