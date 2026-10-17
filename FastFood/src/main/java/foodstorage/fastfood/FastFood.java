@@ -170,4 +170,36 @@ public class FastFood {
             }
         }
     }
+    
+    private static void removeFood(FoodStorage storage, int mode) {
+        FoodItem removedItem;
+        
+        if (mode == 1) {
+            removedItem = storage.removeFromFront();
+        } else {
+            removedItem = storage.removeFromOppositeSide();
+        }
+        
+        if (removedItem != null) {
+            System.out.println("Removed: " + removedItem.getName());
+        }
+    }
+    
+    private static void peekFood(FoodStorage storage, int mode) {
+        FoodItem item;
+        
+        if (mode == 1) {
+            item = storage.peekFront();
+        } else {
+            item = storage.peekOppositeSide();
+        }
+        
+        if (item == null) {
+            System.out.println("Storage is empty. No item to peek.");
+        } else {
+            System.out.println("Next food item: " + item.getName());
+            System.out.println(item);
+        }
+    }
+    
 }
