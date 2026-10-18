@@ -77,6 +77,18 @@ public FoodItem searchByName(String name){
     }
     return null;
 }
+// Display all items in storage.
+public void displayAll(){
+    if (isEmpty()){
+        System.out.println("Storage is empty.");
+        return;
+    }
+    System.out.println("Current trays in storage:");
+    for (FoodItem item : storage){
+        System.out.println("-" + item.getName());
+    }
+    System.out.println("Used:" + getSize() + "/" + MAX_CAPACITY);
+}
 
 }
 
