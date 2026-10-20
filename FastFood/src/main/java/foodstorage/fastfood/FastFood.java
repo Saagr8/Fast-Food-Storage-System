@@ -153,7 +153,7 @@ public class FastFood {
         LocalDate latestDate = today.plusDays(14);
         
         while (true) {
-            System.out.println("Enter best-before date (YYY-MM-DD, within 14 days): ");
+            System.out.println("Enter best-before date (YYYY-MM-DD, within 14 days): ");
             String input = scanner.nextLine().trim();
             
             try {
