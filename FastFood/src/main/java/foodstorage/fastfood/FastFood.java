@@ -109,6 +109,7 @@ public class FastFood {
          String name = readFoodName(scanner);
          double weight = readWeight(scanner);
          LocalDate bestBeforeDate = readBestBeforeDate(scanner);
+         FoodItem item = new FoodItem(name, weight, bestBeforeDate);
          storage.addFood(item);
     }
     
@@ -120,8 +121,8 @@ public class FastFood {
             if (name.equalsIgnoreCase("Burger")
                     || name.equalsIgnoreCase("Pizza")
                     || name.equalsIgnoreCase("Sandwich")
-                    || name.equalsIgnoreCase("Hotdog")){
-                
+                    || name.equalsIgnoreCase("Hotdog")
+                    || name.equalsIgnoreCase("Fries")){
                 return name;
             }
             
@@ -149,7 +150,7 @@ public class FastFood {
     
     private static LocalDate readBestBeforeDate(Scanner scanner){
         LocalDate today = LocalDate.now();
-        LocalDate lastestDate = today.plusDays(14);
+        LocalDate latestDate = today.plusDays(14);
         
         while (true) {
             System.out.println("Enter best-before date (YYY-MM-DD, within 14 days): ");
