@@ -16,21 +16,25 @@ import java.util.Scanner;
 public class FastFood {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        FoodStorage storage = new FoodStorage();
         
+        Scanner scanner = new Scanner(System.in);// Reads the user input from the keyboard
+        FoodStorage storage = new FoodStorage();// Creates the storage for food items.
         
+        // Shows the title of the application.
         System.out.println("====================================");
         System.out.println(" FAST-FOOD STORAGE SYSTEM");
         System.out.println("====================================");
 
+        //Lets the user choose how to store the food.
         int mode = chooseMode(scanner);
         boolean running = true;
         
+        // Keeps showing the menu until the user exits.
         while (running) {
             showMenu(mode);
-            int choice = readInt(scanner, "Choose an option");
+            int choice = readInt(scanner, "Choose an option"); // Get the option chosen by the user.
             
+            // Runs the function based on the user choice.
             switch (choice){
                 case 1:
                     addFood(scanner, storage);
@@ -53,16 +57,19 @@ public class FastFood {
                     break;
                     
                 case 6:
+                    // Stop the program.
                     System.out.println("Application terminated. Goodbye!");
                     running = false;
                     break;
                 
                 default:
+                    // Shows message incase the option is not valid.
                     System.out.println("Invalid option. Please choose 1 to 6.");
             }
        
         }
         
+        // Closes the scanner when the program ends.
         scanner.close();
         
     }
