@@ -73,6 +73,8 @@ public class FastFood {
         scanner.close();
         
     }
+    
+    // Allows the user to choose Stack or Queue mode.
     private static int chooseMode(Scanner scanner){
         System.out.println("Choose storage mode: ");
         System.out.println("1. Same side - Stack / LIFO");
@@ -81,6 +83,7 @@ public class FastFood {
         while (true){
             int mode = readInt(scanner, "Enter 1 or 2: ");
             
+            // Accepts only option 1 or 2.
             if (mode == 1 || mode == 2) {
                 return mode;
             }
@@ -90,6 +93,7 @@ public class FastFood {
         }
    }  
    
+    // Displays the menu and the current storage mode.
     private static void showMenu(int mode){
         System.out.println("\n--------------- MENU ---------------");
         
@@ -107,24 +111,30 @@ public class FastFood {
         System.out.println("------------------------------");
     }
     
+    // Gets the food details and adds the item to storage.
     private static void addFood(Scanner scanner, FoodStorage storage){
+        
+        // Checks if there is space before adding a new item.
          if (storage.isFull()){
              System.out.println("Storage is full. Maximum capacity is 8 trays");
              return;
          }
          
+         // Get the food name, weight and best-before date.
          String name = readFoodName(scanner);
          double weight = readWeight(scanner);
          LocalDate bestBeforeDate = readBestBeforeDate(scanner);
-         FoodItem item = new FoodItem(name, weight, bestBeforeDate);
-         storage.addFood(item);
+         FoodItem item = new FoodItem(name, weight, bestBeforeDate); // Creates a new food item using the details entered.
+         storage.addFood(item); // Adds the new item to storage.
     }
     
+    // Checks if the food name is one of the allowed choices.
     private static String readFoodName(Scanner scanner){
         while (true){
             System.out.println("Enter food name (Burger, Pizza, Fries, Sandwich, Hotdog): ");
             String name = scanner.nextLine().trim();
             
+            // Accepts the five food names without checking capital letters.
             if (name.equalsIgnoreCase("Burger")
                     || name.equalsIgnoreCase("Pizza")
                     || name.equalsIgnoreCase("Sandwich")
@@ -133,10 +143,12 @@ public class FastFood {
                 return name;
             }
             
+            // Ask again if the name is not allowed.
             System.out.println("Invalid food name. Please choose one of the five foods. ");
         }
     }
     
+    // Checks the weight is a valid number greater than 0.
     private static double readWeight(Scanner scanner){
         while (true) {
             System.out.println("Enter weight in grams: ");
@@ -145,16 +157,19 @@ public class FastFood {
             try{
                 double weight = Double.parseDouble(input);
                 
+                // Weight must be positive.
                 if (weight > 0){
                     return weight;
                 }
                 System.out.println("Weight must be greater than 0.");
             } catch (NumberFormatException e) {
+                // Handles input that is not a valid number.
                 System.out.println("Please enter a valid number for weight.");
             }
         }
     }
     
+    // Check the best-before date is today or within the next 14 days.
     private static LocalDate readBestBeforeDate(Scanner scanner){
         LocalDate today = LocalDate.now();
         LocalDate latestDate = today.plusDays(14);
@@ -167,42 +182,51 @@ public class FastFood {
                 LocalDate date = LocalDate.parse(input);
                 
                 if ( date.isBefore(today)){
-                    System.out.println("Best-before date cannot be in the past.");
+                    System.out.println("Best-before date cannot be in the past."); // Rejects if dates have passed.
                 } else if (date.isAfter(latestDate)) {
-                    System.out.println("Best-before date cannot be more than 14 days away.");
+                    System.out.println("Best-before date cannot be more than 14 days away."); // Rejects if dates more than 14 days away.
                 } else {
                     return date;
                 }
             } catch (DateTimeParseException e) {
+                // Handles dates entered in the wrong format.
                 System.out.println("Invalid date. Use YYYY-MM-DD. ");
             }
         }
     }
     
+    // Removes a food item based on the selected mode.
     private static void removeFood(FoodStorage storage, int mode) {
         FoodItem removedItem;
         
+        // Stack removes from the front.
         if (mode == 1) {
             removedItem = storage.removeFromFront();
         } else {
+            // Queue removes from the opposite side.
             removedItem = storage.removeFromOppositeSide();
         }
         
+        // Shows the name if an item was removed.
         if (removedItem != null) {
             System.out.println("Removed: " + removedItem.getName());
         }
     }
     
+    // Shows the next food item without removing it.
     private static void peekFood(FoodStorage storage, int mode) {
         FoodItem item;
         
+        // Check the front in Stack mode.
         if (mode == 1) {
             item = storage.peekFront();
         } else {
+            // Check the opposite side in Queue mode.
             item = storage.peekOppositeSide();
         }
         
         if (item == null) {
+            // Show a message when storage is empty.
             System.out.println("Storage is empty. No item to peek.");
         } else {
             System.out.println("Next food item: " + item.getName());
@@ -210,7 +234,9 @@ public class FastFood {
         }
     }
     
+    // Searches for a food item using its name.
     private static void searchFood(Scanner scanner, FoodStorage storage) {
+        // No search can be done if storage is empty.
         if (storage.isEmpty()) {
             System.out.println("Storage is empty. Nothing to search.");
             return;
@@ -218,7 +244,7 @@ public class FastFood {
         
         System.out.println("Enter food name to search: ");
         String name = scanner.nextLine().trim();
-        FoodItem found = storage.searchByName(name);
+        FoodItem found = storage.searchByName(name);// Looks for a matching food item in storage.
         
         if (found == null) {
             System.out.println(name + " was not found in storage.");
@@ -228,6 +254,7 @@ public class FastFood {
         }
     }
     
+    // Read a whole number and ask again if the input is invalid
     private static int readInt(Scanner scanner, String message){
         while (true) {
             System.out.println(message);
@@ -236,6 +263,7 @@ public class FastFood {
             try {
                 return Integer.parseInt(input);
             } catch (NumberFormatException e) {
+                // Handles letters or other invalid menu input.
                 System.out.println("Please enter a valid whole number.");
             }
         }
